@@ -1,0 +1,31 @@
+@charset "UTF-8";
+body {
+	font-family:'Product Sans Regular';
+	font-size : 17px;
+}
+
+header
+{
+	height : 10vh;
+	color : white;
+	background-color : #223a5e;
+}
+
+main
+{
+	height:  82.5vh;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+footer
+{
+	height : 7.5vh;
+	color : white;
+	background-color : #223a5e;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }

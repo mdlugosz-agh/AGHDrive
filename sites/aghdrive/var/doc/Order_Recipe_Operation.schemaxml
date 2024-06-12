@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">astem-ols</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="recipe" view="colnames">
+<left>35</left>
+<top>45</top>
+<width>98</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `recipe` (
+  `recipe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(254) NOT NULL COMMENT 'Nazwa receptury',
+  `code` char(254) NOT NULL COMMENT 'Kod receptury',
+  `active` enum('yes','no') NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`recipe_id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="recipe_operation" view="colnames">
+<left>608</left>
+<top>63</top>
+<width>159</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `recipe_operation` (
+  `recipe_operation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(254) NOT NULL COMMENT 'Nazwa operacji receptury',
+  `code` char(254) NOT NULL COMMENT 'Kod operacji receptury',
+  `active` enum('yes','no') NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`recipe_operation_id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="order" view="colnames">
+<left>339</left>
+<top>229</top>
+<width>149</width>
+<height>231</height>
+<sql_create_table>CREATE TABLE `order` (
+  `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `recipe_id` int(10) unsigned NOT NULL COMMENT 'Receptura',
+  `date_start` datetime DEFAULT NULL COMMENT 'Rozpoczecie realizacji zamowienia',
+  `date_stop` datetime DEFAULT NULL COMMENT 'Zakonczenie realizacji zamowienia',
+  `duration` int(11) DEFAULT NULL COMMENT 'Czas (w sekundach) realizacji zamowienia',
+  `sidewall_id` int(10) unsigned DEFAULT NULL,
+  `tread_segment_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL COMMENT 'Uzytkownik dodajacy/edytujacy zamowienie',
+  `date_edit` datetime NOT NULL COMMENT 'Czas dodanie/edycji zamowienia',
+  `active` enum('yes','no') NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`order_id`),
+  KEY `recipe_id` (`recipe_id`),
+  KEY `sidewall_id` (`sidewall_id`),
+  KEY `tread_segment_id` (`tread_segment_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`recipe_id`) ON UPDATE CASCADE,
+  CONSTRAINT `order_ibfk_2` FOREIGN KEY (`sidewall_id`) REFERENCES `sidewall` (`sidewall_id`) ON UPDATE CASCADE,
+  CONSTRAINT `order_ibfk_3` FOREIGN KEY (`tread_segment_id`) REFERENCES `tread_segment` (`tread_segment_id`) ON UPDATE CASCADE,
+  CONSTRAINT `order_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="tread_segment" view="colnames">
+<left>37</left>
+<top>444</top>
+<width>149</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `tread_segment` (
+  `tread_segment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `number` char(32) NOT NULL,
+  `active` enum('yes','no') NOT NULL DEFAULT 'yes',
+  `season` enum('winter','summer') NOT NULL,
+  PRIMARY KEY (`tread_segment_id`),
+  UNIQUE KEY `number` (`number`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="user" view="colnames">
+<left>623</left>
+<top>373</top>
+<width>138</width>
+<height>248</height>
+<sql_create_table>CREATE TABLE `user` (
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `login` varchar(32) NOT NULL DEFAULT ' ',
+  `passwd` varchar(32) NOT NULL DEFAULT ' ',
+  `last_login` datetime DEFAULT '1970-01-01 00:00:00',
+  `active` tinyint(1) DEFAULT '1',
+  `owner_user_id` int(10) unsigned DEFAULT NULL,
+  `owner_group_id` int(10) unsigned DEFAULT NULL,
+  `name` char(254) NOT NULL,
+  `surname` char(254) NOT NULL,
+  `email` char(254) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `login` (`login`),
+  KEY `owner_user_id` (`owner_user_id`),
+  KEY `owner_group_id` (`owner_group_id`),
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`owner_user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE,
+  CONSTRAINT `user_ibfk_2` FOREIGN KEY (`owner_group_id`) REFERENCES `liveuser_groups` (`group_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="sidewall" view="colnames">
+<left>31</left>
+<top>257</top>
+<width>108</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `sidewall` (
+  `sidewall_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `number` char(32) NOT NULL,
+  `active` enum('yes','no') NOT NULL DEFAULT 'yes',
+  `type` enum('COQ STD','COQ Velur') NOT NULL COMMENT 'Type of sidewall',
+  `side` enum('COQA','COQB') NOT NULL COMMENT 'Top or bottom of sidewall',
+  PRIMARY KEY (`sidewall_id`),
+  UNIQUE KEY `number` (`number`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="operation" view="colnames">
+<left>921</left>
+<top>247</top>
+<width>159</width>
+<height>214</height>
+<sql_create_table>CREATE TABLE `operation` (
+  `operation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `date_start` datetime NOT NULL COMMENT 'Rozpoczci operacji',
+  `date_stop` datetime DEFAULT NULL COMMENT 'Zakonczenie operacji',
+  `duration` int(10) unsigned DEFAULT NULL COMMENT 'Czas (w sekundach) operacji',
+  `recipe_operation_id` int(10) unsigned NOT NULL COMMENT 'Operacja receptury',
+  `user_id` int(10) unsigned NOT NULL COMMENT 'Uzystkownik wykonujacy operacje',
+  `completed` enum('yes','no') NOT NULL DEFAULT 'yes' COMMENT 'Czy operacja zastala zakonczona',
+  `active` enum('yes','no') NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`operation_id`),
+  KEY `recipe_operation_id` (`recipe_operation_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`recipe_operation_id`) REFERENCES `recipe_operation` (`recipe_operation_id`) ON UPDATE CASCADE,
+  CONSTRAINT `operation_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="recipe_has_recipe_operation" view="colnames">
+<left>331</left>
+<top>45</top>
+<width>159</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `recipe_has_recipe_operation` (
+  `recipe_id` int(10) unsigned NOT NULL,
+  `recipe_operation_id` int(10) unsigned NOT NULL,
+  UNIQUE KEY `recipe_id` (`recipe_id`,`recipe_operation_id`),
+  KEY `recipe_operation_id` (`recipe_operation_id`),
+  CONSTRAINT `recipe_has_recipe_operation_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`recipe_id`) ON UPDATE CASCADE,
+  CONSTRAINT `recipe_has_recipe_operation_ibfk_2` FOREIGN KEY (`recipe_operation_id`) REFERENCES `recipe_operation` (`recipe_operation_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="order_has_operation" view="colnames">
+<left>624</left>
+<top>229</top>
+<width>117</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `order_has_operation` (
+  `order_id` int(10) unsigned NOT NULL,
+  `operation_id` int(10) unsigned NOT NULL,
+  UNIQUE KEY `order_id` (`order_id`,`operation_id`),
+  KEY `operation_id` (`operation_id`),
+  CONSTRAINT `order_has_operation_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON UPDATE CASCADE,
+  CONSTRAINT `order_has_operation_ibfk_2` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

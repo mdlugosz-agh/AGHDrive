@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+div.quickform
+{
+	display: inline-block;
+}
+
+div.quickform fieldset
+{
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #CFCFCF;
+	padding-left : 20px;
+	padding-right : 20px;
+}
+
+div.quickform fieldset legend
+{
+	font-family : 'Product Sans Bold';
+	font-size : 120%;
+	padding-left:0.2em;
+	padding-right:0.2em;
+}
+
+div.quickform div.reqnote
+{
+	color : red;
+	font-family: 'Product Sans Italic';
+	font-size : 80%;
+}
+
+div.quickform span.required
+{
+	font-family: 'Product Sans Bold';
+	font-size : 125%;
+}
+
+/*
+div.quickform div.element > input[type=submit]
+{
+	font-family: 'Product Sans Bold';
+	font-size : 120%;
+	padding : 10px;
+	border-radius : 2px;
+}
+*/
+div.quickform div.element > button
+{
+	font-family: 'Product Sans Bold';
+}
+
+div.quickform div.element input[type=text|password]
+{
+	border-radius: 3px;
+	border: 1px solid #AFAFAF;
+	padding : 3px;
+}
+
+div.quickform p.label
+{
+	margin-top : 10px;
+	margin-bottom : 2px;
+}
+
+div.quickform span.error
+{
+	color : red;
+}
+
+div.quickform div.element.error input[type=text], div.quickform div.element.error input[type=password]
+{
+	border : 1px solid red;
+	background-color : rgba(255,0,0,0.15);
+}
+
+div.quickform p, div.quickform div.error, div.quickform legend, div.quickform div.reqnote {
+	text-align: left;
+}

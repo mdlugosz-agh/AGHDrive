@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MAIN ELEMENTS -->
+
+<!ELEMENT database (name, create?, overwrite?, description?, comments?, table+, sequence*)>
+<!ELEMENT table (#PCDATA | name | was | description | comments | declaration | initialization)*>
+<!ELEMENT initialization (insert | update | delete)+>
+<!ELEMENT insert (field+ | select)>
+<!ELEMENT update (field+, where?)>
+<!ELEMENT delete (where)>
+<!ELEMENT select (table, field+, where?)>
+
+<!-- CHILD ELEMENTS -->
+
+<!ELEMENT sequence (name, was?, start?, description?, comments?, on)>
+<!ELEMENT on (table, field)>
+
+<!ELEMENT declaration (field+, index*, foreign*)>
+<!ELEMENT index (name, was?, unique?, primary?, field+)>
+<!ELEMENT foreign (name, was?, match?, ondelete?, onupdate?, deferrable?, initiallydeferred?, field+, references)>
+    
+<!ELEMENT references (table, field*)>
+<!ELEMENT where (expression)>
+<!ELEMENT expression ((value | column | function | expression | null), operator, (value | column | function | expression | null))>
+<!ELEMENT field (#PCDATA | name | was | type | fixed | default | notnull | autoincrement | unsigned | length | description | comments | sorting | column | value | function | expression | null)*>
+<!ELEMENT function (name, (value | column | function | expression | null)*)>
+
+<!-- BASIC ELEMENTS -->
+
+<!ELEMENT comments (#PCDATA | variable)*>
+<!ELEMENT create (#PCDATA | variable)*>
+<!ELEMENT default (#PCDATA | variable)*>
+<!ELEMENT description (#PCDATA | variable)*>
+<!ELEMENT length (#PCDATA | variable)*>
+<!ELEMENT name (#PCDATA | variable)*>
+<!ELEMENT notnull (#PCDATA | variable)*>
+<!ELEMENT overwrite (#PCDATA | variable)*>
+<!ELEMENT sorting (#PCDATA | variable)*>
+<!ELEMENT start (#PCDATA | variable)*>
+<!ELEMENT type (#PCDATA | variable)*>
+<!ELEMENT unique (#PCDATA | variable)*>
+<!ELEMENT primary (#PCDATA | variable)*>
+<!ELEMENT autoincrement (#PCDATA | variable)*>
+<!ELEMENT unsigned (#PCDATA | variable)*>
+<!ELEMENT value (#PCDATA | variable)*>
+<!ELEMENT column (#PCDATA | variable)*>
+<!ELEMENT operator (#PCDATA | variable)*>
+<!ELEMENT was (#PCDATA | variable)*>
+<!ELEMENT null (#PCDATA | variable)*>
+<!ELEMENT match (#PCDATA | variable)*>
+<!ELEMENT ondelete (#PCDATA | variable)*>
+<!ELEMENT onupdate (#PCDATA | variable)*>
+<!ELEMENT variable (#PCDATA)>

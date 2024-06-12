@@ -1,0 +1,5 @@
+#!C:\wamp\bin\php\php7.1.9\\php.exe
+<?php
+require_once 'MDB2/Schema/Tool.php';
+MDB2_Schema_Tool::run();
+?>
