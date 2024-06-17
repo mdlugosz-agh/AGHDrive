@@ -14,7 +14,7 @@
         
         <div class="w3-third w3-center">
             <a href="{$PAGE.ROUTER->generate(['controller'=>'Team', 'id'=> $member])}">
-            {include file="../../../content/team/{$member}"}
+            {include file="../../../content/team/{$member}.tpl" type="short"}
             </a>
         </div>
 

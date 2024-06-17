@@ -1,12 +1,3 @@
 {extends file="layout01.tpl"}
 
-{block name="header"}
-	Member
-{/block}
-
-
-{block name="body"}
-    
-   {debug}
-
-{/block}
+{include file="../../../content/team/{$member}.tpl" type="full"}

@@ -30,7 +30,7 @@ class Controller_Main_Documentation extends Controller
 				. DIRECTORY_SEPARATOR 
 				. 'documentation/' 
 				. $this->request->route['key'] . '.tpl';
-			dump($content_filename);
+			
 			// Check if file exist
 			if (!file_exists($content_filename)) {
 				throw new Exception('File do not exist!');
@@ -39,8 +39,7 @@ class Controller_Main_Documentation extends Controller
 			$this->response->content_filename = '../../' . $content_filename;
 		}
 
-		dump($this->request->route);
-        // Set template name
+		// Set template name
         $this->response->template = 'documentation/document';
 
 		return $this->response;
