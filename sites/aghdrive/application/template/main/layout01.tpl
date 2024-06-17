@@ -59,7 +59,7 @@
 		
 		</div>
 		
-		<div class="w3-container" style="max-width:1120px;margin:auto;">
+		<div class="w3-container w3-auto" style="max-width:1120px;">
 
 			{* PAGE HEADER *}
 			<header class="w3-container w3-h1">
@@ -73,7 +73,7 @@
 			</main>
 			
 			{* PAGE FOOTER *}
-			<footer class="w3-container w3-border-top w3-margin-top">
+			<footer class="w3-container w3-border-top w3-margin-top w3-auto">
 				<p style="color:lightgray;font-size:0.75em;">Polish open road dataset for automotive</p>
 				<p style="color:lightgray;font-size:0.75em;">{$smarty.now|date_format:"%Y"}</p>
 				<a href="{$PAGE.ROUTER->generate(['controller'=>'Documentation', 'key'=>'privacy_policy', 'action' => 'run'])}">Privacy Policy</a>

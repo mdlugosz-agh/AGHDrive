@@ -60,8 +60,10 @@
 			{block name="header"}{/block}
 		</header>
 		
-		<main class="w3-container">
+		<main >
+			<div class="w3-container">
 			{include file="../alert.tpl" alert=$ALERT}
+			</div>
 			{block name="body"}{/block}
 		</main>
 		
