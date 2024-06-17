@@ -25,7 +25,7 @@ I. PREAMBLE
 </p><p>
 5. Unauthorized use of website content, works or information, as well as unauthorized reproduction, retransmission or other use of any element of the website is prohibited, as such action may violate, among other things, copyrights or protected trademarks.
 </p><p>
-6. Questions or comments about the website can be submitted to the following email address: <a href="mailto:drive@agh.edu.pl">drive@agh.edu.pl</a>.
+6. Questions or comments about the website can be submitted to the following email address: {mailto address='drive@agh.edu.pl' encode='javascript' subject='AGHDrive terms question'}.
 </p>
 </div>
 
@@ -212,7 +212,7 @@ IX. NEWSLETTER
 </p><p>
 2. By means of a newsletter, sent by e-mail or SMS, the Owner informs the User about the latest offers, e.g. news, promotions or sales.
 </p><p>
-3. The user may unsubscribe from the newsletter at any time by clicking on the link contained in the newsletter received or by sending an email to: <a href="mailto:unsubscribe-drive@agh.edu.pl">unsubscribe-drive@agh.edu.pl</a>.
+3. The user may unsubscribe from the newsletter at any time by clicking on the link contained in the newsletter received or by sending an email to: {mailto address='unsubscribe-drive@agh.edu.pl' encode='javascript' subject='AGHDrive unsubscribe'}.
 </p>
 </div>
 
