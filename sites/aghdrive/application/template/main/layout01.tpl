@@ -10,17 +10,19 @@
 			{block name="title"}AGH Drive{/block}
 		</title> 
 		
+		<base href="{$smarty.const.BASE_URL}" />
+
 		{block name="css"}
 			<!-- https://www.w3schools.com/w3css/w3css_fonts.asp -->
 			<!-- https://fontawesome.com/icons?d=listing -->
 			<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-			<link rel="stylesheet" type="text/css" href="{$smarty.const.BASE_URL}/css/font.css"/>
+			<link rel="stylesheet" type="text/css" href="css/font.css"/>
 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-			<link rel="stylesheet" type="text/css" href="{$smarty.const.BASE_URL}/css/w3415.css"/>
-			<link rel="stylesheet" type="text/css" href="{$smarty.const.BASE_URL}/css/qForm.css"/>
-			<link rel="stylesheet" type="text/css" href="{$smarty.const.BASE_URL}/css/alert.css"/>
-			<link rel="stylesheet" type="text/css" href="{$smarty.const.BASE_URL}/css/main.css"/>
-			<link rel="stylesheet" type="text/css" href="{$smarty.const.BASE_URL}/css/menu.css"/>
+			<link rel="stylesheet" type="text/css" href="css/w3415.css"/>
+			<link rel="stylesheet" type="text/css" href="css/qForm.css"/>
+			<link rel="stylesheet" type="text/css" href="css/alert.css"/>
+			<link rel="stylesheet" type="text/css" href="css/main.css"/>
+			<link rel="stylesheet" type="text/css" href="css/menu.css"/>
 		{/block}
 		
 
@@ -40,7 +42,7 @@
 			<div class="w3-bar" style="max-width:1120px;margin:auto;">
 				
 				<a href="{$PAGE.ROUTER->generate()}" class="w3-bar-item w3-button w3-mobile">Home</a>
-				<a href="#" class="w3-bar-item w3-button w3-mobile">News</a>
+				<a href="{$PAGE.ROUTER->generate(['controller'=>'News'])}" class="w3-bar-item w3-button w3-mobile">News</a>
 				<a href="{$PAGE.ROUTER->generate(['controller'=>'Documentation'])}" class="w3-bar-item w3-button w3-mobile">Documentation</a>
 				<a href="{$PAGE.ROUTER->generate(['controller'=>'Team'])}" class="w3-bar-item w3-button w3-mobile">Team</a>
 				<a href="{$PAGE.ROUTER->generate(['controller'=>'Download'])}" class="w3-bar-item w3-button w3-mobile">Download</a>
