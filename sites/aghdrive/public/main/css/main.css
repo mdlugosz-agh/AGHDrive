@@ -30,3 +30,8 @@ div.login-logout > a
 {
 	color : white;
 }
+
+a.neutral {
+	color : inherit !important;
+	text-decoration: none !important;
+}

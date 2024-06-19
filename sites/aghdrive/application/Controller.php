@@ -110,4 +110,24 @@ abstract class Controller
 		}
 		return $this->response;
 	}
+	
+	/**
+	 * readContent
+	 *
+	 * @param  mixed $path
+	 * @param  mixed $sort
+	 * @return array
+	 */
+	protected function readContent(String $path, int $sort=SCANDIR_SORT_DESCENDING) : array
+	{
+		$response = array();
+		foreach( array_filter(scandir( $path, $sort), 
+            	function(string $value){ return preg_match('/^\d{3}\.php$/', $value)==1 ? true : false; }) as $file_name ) {
+			
+			$response[] = array_merge(
+				array('id' => str_replace('.php', '', $file_name)), 
+				include(join(DIRECTORY_SEPARATOR, array($path, $file_name))));
+		}
+		return $response;
+	}
 }

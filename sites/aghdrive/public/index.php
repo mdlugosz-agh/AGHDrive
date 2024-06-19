@@ -40,6 +40,10 @@ $m = Net_URL_Mapper::getInstance();
 $m->connect('', 				array('controller' 	=> 'Index'));
 $m->connect('team/list', 		array('controller' 	=> 'Team',	'action' => 'list'));
 $m->connect('team/:id',			array('controller'	=> 'Team',	'action' => 'member'));
+
+$m->connect('news/list', 		array('controller' 	=> 'News',	'action' => 'list'));
+$m->connect('news/:id',			array('controller'	=> 'News',	'action' => 'news'));
+
 $m->connect('documentation',	array('controller' 	=> 'Documentation',	'action' => 'list'));
 $m->connect('login', 			array('controller' 	=> 'Login'));
 $m->connect('logout', 			array('controller' 	=> 'Logout'));

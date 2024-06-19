@@ -26,6 +26,8 @@ define("RESET_PASSWORD_VALID_TIME", 15);
 
 // Content path
 define("PATH_TO_CONTENT", join(DIRECTORY_SEPARATOR, array('..', '..','application', 'content')));
+define("PATH_TO_CONTENT_NEWS", join(DIRECTORY_SEPARATOR, array(PATH_TO_CONTENT, 'news')));
+define("PATH_TO_CONTENT_TEAM", join(DIRECTORY_SEPARATOR, array(PATH_TO_CONTENT, 'team')));
 
 /**************** Base on domain name set application stage *******************/
 switch ($_SERVER['HTTP_HOST']) {

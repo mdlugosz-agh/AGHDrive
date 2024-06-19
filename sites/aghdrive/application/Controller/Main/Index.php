@@ -22,6 +22,10 @@ class Controller_Main_Index extends Controller
 	{
 		parent::run();
 		
+		// Read news list
+		$this->response->news_list = array_slice((new Controller_Main_News($this->request))->list()->news_list, 0, 3);
+		
+		
 		//dump($this->request->LU->login('bb', 'bb'));
 
 		//  echo Liveuser_rights::factory('right_define_name', 'DOWNLOAD')->right_id . '<br/>';
