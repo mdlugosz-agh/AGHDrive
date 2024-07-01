@@ -112,13 +112,13 @@ abstract class Controller
 	}
 	
 	/**
-	 * readContent
+	 * readContentList
 	 *
 	 * @param  mixed $path
 	 * @param  mixed $sort
 	 * @return array
 	 */
-	protected function readContent(String $path, int $sort=SCANDIR_SORT_DESCENDING) : array
+	protected function readContentList(String $path, int $sort=SCANDIR_SORT_DESCENDING) : array
 	{
 		$response = array();
 		foreach( array_filter(scandir( $path, $sort), 
@@ -126,8 +126,21 @@ abstract class Controller
 			
 			$response[] = array_merge(
 				array('id' => str_replace('.php', '', $file_name)), 
-				include(join(DIRECTORY_SEPARATOR, array($path, $file_name))));
+				$this->readContent($path, $file_name));
 		}
 		return $response;
+	}
+	
+	/**
+	 * readContent
+	 *
+	 * @param  string $path
+	 * @param  string $id
+	 * @return array
+	 */
+	protected function readContent(String $path, String $file_name) : array
+	{
+		return array_merge(array('id' => str_replace('.php', '', $file_name)),
+			include(join(DIRECTORY_SEPARATOR, array($path, $file_name))));
 	}
 }

@@ -15,7 +15,7 @@ $item = array(
     <p>
     Donec justo ante, pretium quis egestas in, egestas et ante. Cras facilisis, nibh sed blandit efficitur, nibh dui pulvinar risus, elementum accumsan ante purus eu diam. Proin luctus ornare malesuada. Aenean congue arcu velit, eu molestie arcu placerat id. Duis nulla ex, efficitur ac varius ac, tincidunt at nulla. Donec eget varius eros. Cras molestie malesuada erat a ullamcorper. Nam pellentesque arcu venenatis, rhoncus ex vel, fringilla massa. Suspendisse hendrerit faucibus ex quis venenatis. Proin quam lectus, tempor non nibh ac, varius interdum est. Vestibulum sollicitudin nulla nec rhoncus hendrerit. Integer a interdum nisi, eget varius lacus. Mauris et semper mauris. Aenean efficitur sem enim, sed fermentum ex tristique vel.
     </p>
-    <img href="img/concept_car.jpg" />
+    <img src="img/concept_car.jpg" />
 ');
 
 return $item;

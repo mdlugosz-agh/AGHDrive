@@ -7,10 +7,9 @@
 
 {block name="body"}
     
-    {foreach $news as $key=>$new}
-        <div>
-        {$news_directory}/{$new}.tpl
-        {include file="{$news_directory}/{$new}.tpl" type="short"}
+    {foreach $news_list as $key=>$news}
+        <div class="w3-margin-top">
+            {include file="news/news_card.tpl" news=$news title_truncate=999 short_truncate=999}
         </div>
     {/foreach}
 

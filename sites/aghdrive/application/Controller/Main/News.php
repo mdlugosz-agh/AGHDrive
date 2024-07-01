@@ -11,8 +11,8 @@ class Controller_Main_News extends Controller
 		parent::run();
         
         // Read news list
-        $this->response->news_list = $this->readContent(PATH_TO_CONTENT_NEWS);
-
+        $this->response->news_list = $this->readContentList(PATH_TO_CONTENT_NEWS);
+        
         // Set template name
         $this->response->template = 'news/list';
         
@@ -27,8 +27,10 @@ class Controller_Main_News extends Controller
     public function news() : Data_Response
     {
         parent::run();
-    
-        $this->response->news = $this->request->route['id'];
+        
+        // Read content of news
+        $this->response->news = $this->readContent(PATH_TO_CONTENT_NEWS, $this->request->route['id'] . '.php');
+        
         $this->response->template = 'news/news';
 
         return $this->response;
