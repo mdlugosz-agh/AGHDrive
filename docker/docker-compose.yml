@@ -19,9 +19,9 @@ services:
         - /Users/mdl/Sites/AGHDrive/db:/var/lib/mysql
         - /Users/mdl/Sites/AGHDrive/log/mariadb:/var/lib/mysql/logs
       expose:
-        - "3306" # expose port 3306 to other containers (and not to the host)
+        - 3306 # expose port 3306 to other containers (and not to the host)
       ports:
-        - "9100:3306"
+        - 9100:3306
 
   phpmyadmin:
     image: phpmyadmin
@@ -35,7 +35,7 @@ services:
     depends_on:
       - mariadb
     ports:
-      - "9101:80"
+      - 9101:80
 
   phpapache:
     container_name: aghdrvie-php-apache
