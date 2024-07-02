@@ -1,4 +1,0 @@
-<?php
-/**
-* Operacja kontynuacji zamowienia
-*/
