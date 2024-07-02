@@ -18,8 +18,18 @@ require_once 'PEAR.php';
 require_once 'DB/DataObject.php';
 require_once 'Net/URL2.php';
 
-define('BASE_DOMAIN', 'aghdrive.local');
-define('BASE_URL', Net_URL2::getRequested()->getScheme() . '://' . BASE_DOMAIN . ':9180');
+
+define('BASE_DOMAIN', Net_URL2::getRequested()->getHost());
+switch (BASE_DOMAIN) {
+	case 'aghdrive.local' : 
+		define('BASE_URL', Net_URL2::getRequested()->getScheme() . '://' . BASE_DOMAIN . ':' . Net_URL2::getRequested()->getPort());
+		define('APP_STAGE', 'development');
+	break;
+
+	default: 
+		define('BASE_URL', Net_URL2::getRequested()->getScheme() . '://' . BASE_DOMAIN );
+		define('APP_STAGE', 'production');
+}
 
 // Time period for change password in minutes
 define("RESET_PASSWORD_VALID_TIME", 15);
@@ -28,25 +38,6 @@ define("RESET_PASSWORD_VALID_TIME", 15);
 define("PATH_TO_CONTENT", join(DIRECTORY_SEPARATOR, array('..', '..','application', 'content')));
 define("PATH_TO_CONTENT_NEWS", join(DIRECTORY_SEPARATOR, array(PATH_TO_CONTENT, 'news')));
 define("PATH_TO_CONTENT_TEAM", join(DIRECTORY_SEPARATOR, array(PATH_TO_CONTENT, 'team')));
-
-/**************** Base on domain name set application stage *******************/
-switch ($_SERVER['HTTP_HOST']) {
-	
-	case BASE_DOMAIN:
-	case 'admin.' . BASE_DOMAIN : 
-	case 'panel.' . BASE_DOMAIN:
-	case 'klient.' . BASE_DOMAIN:
-		define('APP_STAGE', 'development');
-		break;
-		
-	case 'dev-admin.' . BASE_DOMAIN:
-		define('APP_STAGE', 'testing');
-		break;
-		
-	default:
-		define('APP_STAGE', 'development');
-		//define('APP_STAGE', 'production');
-}
 
 /************ Base on stage application set log error level *******************/
 switch (APP_STAGE) {
@@ -159,10 +150,7 @@ $options = $config['DB_DataObject'];
 /******************************* LiveUser *************************************/
 include_once '../../application/config/liveuser/config.php';
 
-/*************************** PHPSpreadsheet ***********************************/
-define('REPORT_SAVE_DIR', 'var/report');
-
-/*************************** PHPSpreadsheet ***********************************/
+/*************************** PHPSMTP ***********************************/
 $smtpinfo = &PEAR::getStaticProperty('App', 'smtpinfo');
 $smtpinfo["host"] = "ssl://poczta.agh.edu.pl";
 $smtpinfo["port"] = "465";
