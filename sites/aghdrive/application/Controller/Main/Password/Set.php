@@ -51,10 +51,15 @@ class Controller_Main_Password_Set extends Controller
 				$this->response->redirect_url = $this->request->router->generate();
 
 			} catch (Controller_Exception $e) {
-				
-				App::addAlert('error', 'Some erroc occur! Pleas contact with administrator.');
-				$this->response->redirect_url = $this->request->router->generate();
 
+				switch($e->getCode()) {
+					case Controller_Exception::USER_CONFIRM_CODE_ISNOT_EXIST:
+						App::addAlert('error', 'Some erroc occur! Pleas contact with administrator.');
+						$this->response->redirect_url = $this->request->router->generate();
+						break;
+					default:
+						;
+				}
 			} catch (Exception $e) {
 				dump($e);
 			}
@@ -81,8 +86,8 @@ class Controller_Main_Password_Set extends Controller
 			throw new Controller_Exception('Account do not exist!', Controller_Exception::USER_CONFIRM_CODE_ISNOT_EXIST);
 		}
 		$data = $this->qForm->getValue();
-
-		$user->save(array('user_id' => $user->user_id, 'passwd' => $data['passwd']));
+		
+		$user->save(array('user_id' => $user->user_id, 'passwd' => LiveUser::encryptPW($data['passwd'], 'MD5', '')));
 		
 		return $this->response;
 	}
