@@ -50,7 +50,9 @@ $m->connect('logout', 			array('controller' 	=> 'Logout'));
 $m->connect('register', 		array('controller' 	=> 'Register'));
 $m->connect('password/reset',	array('controller' 	=> 'Password_Reset'));
 $m->connect('password/set/:code',array('controller' => 'Password_Set'));
-$m->connect('download', 		array('controller' 	=> 'Download'));
+$m->connect('download/list', 	array('controller' 	=> 'Download', 'action' => 'list'));
+$m->connect('download/info/:id',array('controller' 	=> 'Download', 'action' => 'info'));
+$m->connect('download/:file', 	array('controller' 	=> 'Download', 'action' => 'download'));
 $m->connect('content/:key', 	array('controller' 	=> 'Documentation', 'action' => 'run'));
 
 $route = $m->match($_SERVER['REQUEST_URI']);

@@ -38,6 +38,9 @@ define("RESET_PASSWORD_VALID_TIME", 15);
 define("PATH_TO_CONTENT", join(DIRECTORY_SEPARATOR, array('..', '..','application', 'content')));
 define("PATH_TO_CONTENT_NEWS", join(DIRECTORY_SEPARATOR, array(PATH_TO_CONTENT, 'news')));
 define("PATH_TO_CONTENT_TEAM", join(DIRECTORY_SEPARATOR, array(PATH_TO_CONTENT, 'team')));
+define("PATH_TO_CONTENT_DOWNLOAD", join(DIRECTORY_SEPARATOR, array(PATH_TO_CONTENT, 'download')));
+// Data path
+define("PATH_TO_DATA", '/mnt/data');
 
 /************ Base on stage application set log error level *******************/
 switch (APP_STAGE) {
