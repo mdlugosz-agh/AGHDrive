@@ -9,7 +9,7 @@
         </div>
 
         <footer class="w3-container w3-light-grey">
-            <h6 class="w3-small">2024-02-01</h6>
+            <h6 class="w3-small">{$download.date}</h6>
         </footer>
     </div>
 </a>
