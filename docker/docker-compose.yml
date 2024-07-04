@@ -47,6 +47,7 @@ services:
     volumes:
         - ../sites:/sites
         - ../etc/apache2:/etc/apache2
+        - ../data:/mnt/data
     expose:
         - 80 8080
     ports:
