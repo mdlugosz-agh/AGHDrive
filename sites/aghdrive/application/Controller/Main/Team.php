@@ -1,42 +1,32 @@
 <?php
 class Controller_Main_Team extends Controller
 {
-	/**
-	 * 
-	 * {@inheritDoc}
-	 * @see Controller::run()
-	 */
-	public function list() : Data_Response
-	{
-		parent::run();
-		
-        // Read memeber list
-        $this->response->members = array_filter(
-            scandir( join(DIRECTORY_SEPARATOR, array('..', '..','application', 'content', 'team')),  
-            SCANDIR_SORT_ASCENDING), 
-            function(string $value){ return preg_match('/^\d{3}\.tpl$/', $value)==1 ? true : false; });
-        
-        // Remove .tpl from file data member
-        $this->response->members = array_map(
-            function(string $value){ return str_replace('.tpl', '', $value); }, 
-            $this->response->members);
-
-        // Set template name
-        $this->response->template = 'team/list';
-
-		return $this->response;
-	}
-        
+	    
     /**
-     * member
+     * list
      *
      * @return Data_Response
      */
+    public function list() : Data_Response
+	{
+		parent::run();
+        
+        // Read news list
+        $this->response->members = $this->readContentList(PATH_TO_CONTENT_TEAM, SCANDIR_SORT_ASCENDING);
+        
+        // Set template name
+        $this->response->template = 'team/list';
+        
+		return $this->response;
+	}
+       
     public function member() : Data_Response
     {
         parent::run();
-    
-        $this->response->member = $this->request->route['id'];
+        
+        // Read content of news
+        $this->response->member = $this->readContent(PATH_TO_CONTENT_TEAM, $this->request->route['id'] . '.php');
+        
         $this->response->template = 'team/member';
 
         return $this->response;
