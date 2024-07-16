@@ -53,6 +53,9 @@ services:
         - 80 8080
     ports:
         - 9180:80
+        # AGH rocky serwer
+        # - 80:80
+        # - 443:443
 
 
 # docker-compose -p "astem-szf" up, https://stackoverflow.com/questions/53401672/stack-name-with-docker-compose
