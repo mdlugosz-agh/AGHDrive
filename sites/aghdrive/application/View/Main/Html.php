@@ -16,6 +16,6 @@ class View_Main_Html extends View_Html
 			->setConfigDir('../../application/template/main/config')
 			->addPluginsDir('../../application/View/plugins');
 
-		$this->template_engine->testInstall();
+		//$this->template_engine->testInstall();
 	}
 }
