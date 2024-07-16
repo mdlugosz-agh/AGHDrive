@@ -12,16 +12,11 @@ abstract class View_Html extends View
 		// Create template engine
 		$this->template_engine = new Smarty();
 		
-		// Add aplication plugins directory
-		$this->template_engine->addPluginsDir('../../application/View/plugins');
-		
 		// Send data template engine
 		$this->template_engine->assign( $data->getAllData() );
 		
 		// Send data from session alert
 		$this->template_engine->assign('ALERT', HTTP_Session2::getLocal('ALERT'));
-		
-		//$this->template_engine->testInstall();
 	}
 	
 	/**
