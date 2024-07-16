@@ -10,9 +10,12 @@ class View_Main_Html extends View_Html
 		parent::__construct($data);
 		
 		$this->template_engine
-		->setTemplateDir('../../application/template/main')
-		->setCompileDir('../../var/smarty/template_c/main')
-		->setCacheDir('../../var/smarty/cache/main')
-		->setConfigDir('../../application/template/main/config');
+			->setTemplateDir('../../application/template/main')
+			->setCompileDir('/var/tmp/smarty/template_c/main')
+			->setCacheDir('/var/tmp/smarty/cache/main')
+			->setConfigDir('../../application/template/main/config')
+			->addPluginsDir('../../application/View/plugins');
+
+		$this->template_engine->testInstall();
 	}
 }
