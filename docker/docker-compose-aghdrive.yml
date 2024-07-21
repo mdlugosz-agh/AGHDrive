@@ -6,7 +6,7 @@ services:
       restart: always
       build:
         context: ./
-        dockerfile: mariadb.dockerfile # build Docker image
+        dockerfile: mariadb-aghdrive.dockerfile # build Docker image
       environment:
         MYSQL_ROOT_PASSWORD: "root123"
         MYSQL_DATABASE: "aghdrive"
@@ -15,7 +15,7 @@ services:
         TZ: "Europe/Warsaw" # do sprawdzenie
       volumes:
         - ../db:/var/lib/mysql
-        - ../log/mariadb:/var/lib/mysql/logs
+        - ../log:/var/lib/mysql/logs
       expose:
         - 3306 # expose port 3306 to other containers (and not to the host)
       ports:
@@ -32,13 +32,15 @@ services:
         - ../sites:/sites
         - ../etc/apache2:/etc/apache2
         - ../certs:/etc/ssl/certs
-        - ../data:/mnt/data
+        - /mnt/data:/mnt/data
     expose:
         - 80 8080
     ports:
-        - 9180:80
+        - 80:80
+        - 443:443
 
-# docker-compose -f docker-compose.yml -p "astem-szf" up, https://stackoverflow.com/questions/53401672/stack-name-with-docker-compose
+
+# docker-compose -f docker-compose-aghdrive.yml -p "astem-szf" up, https://stackoverflow.com/questions/53401672/stack-name-with-docker-compose
 # docker-compose up -d
 # docker-compose -p "astem-szf" build -d
 # Zmiana strefy czasowej mariadb https://mariadb.com/kb/en/time-zones/
