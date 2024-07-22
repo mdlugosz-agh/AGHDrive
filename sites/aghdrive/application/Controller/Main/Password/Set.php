@@ -76,10 +76,7 @@ class Controller_Main_Password_Set extends Controller
 	 */
 	public function action() : Data_Response
 	{
-		if (!$this->qForm->validate()) {
-			throw new Controller_Exception('Form data are not valid!', 
-				Controller_Exception::FORM_VALID_DATA);
-		}
+		parent::action();
 
 		$user = User::factory('confirm_code', $this->request->route['code']);
 		if (!$user->user_id>0) {
