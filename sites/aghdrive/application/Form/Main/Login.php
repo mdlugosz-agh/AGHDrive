@@ -5,7 +5,7 @@ class Form_Main_Login extends Form
 	 * 
 	 * @param String $id
 	 */
-	public function __construct($id = __CLASS__, $method = 'get',$attributes = null, 
+	public function __construct($id = __CLASS__, $method = 'post',$attributes = null, 
 		$trackSubmit = true)
 	{
 		parent::__construct($id, $method, $attributes, $trackSubmit);
