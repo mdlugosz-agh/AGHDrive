@@ -5,7 +5,7 @@ class Form_Main_Register extends Form
 	 * 
 	 * @param String $id
 	 */
-	public function __construct($id = __CLASS__, $method = 'get',$attributes = null, 
+	public function __construct($id = __CLASS__, $method = 'post',$attributes = null, 
 		$trackSubmit = true)
 	{
 		parent::__construct($id, $method, $attributes, $trackSubmit);
@@ -26,11 +26,11 @@ class Form_Main_Register extends Form
 			->loadOptions(array('A'=>'A', 'B'=>'B', 'C'=>'C', 'D'=>'D'));
 		*/
 
-		$password = $fieldset->addElement('password', 'password', 
+		$password = $fieldset->addElement('password', 'passwd', 
 			array('size' => 50, 'maxlength' => 255))
 			->setLabel('Password:');
 
-		$password2 = $fieldset->addElement('password', 'password2', 
+		$password2 = $fieldset->addElement('password', 'passwd2', 
 			array('size' => 50, 'maxlength' => 255))
 			->setLabel('Confirm password:');
 		
@@ -48,4 +48,5 @@ class Form_Main_Register extends Form
 		$password2->addRule('required', 'Confirm password');
 		$password2->addRule('eq', 'The passwords do not match', $password);
 	}
+
 }
