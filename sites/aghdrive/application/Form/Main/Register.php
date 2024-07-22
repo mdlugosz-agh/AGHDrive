@@ -45,6 +45,7 @@ class Form_Main_Register extends Form
 		
 		// Check if password is set and is equal
 		$password->addRule('required', 'Set password');
+		$password->addRule('minlength', 'Password should be at least 8 characters long', 8);
 		$password2->addRule('required', 'Confirm password');
 		$password2->addRule('eq', 'The passwords do not match', $password);
 	}
