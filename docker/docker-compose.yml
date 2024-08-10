@@ -34,13 +34,14 @@ services:
         - ../certs:/etc/ssl/certs
         - ../data:/mnt/data
     expose:
-        - 80 8080
+        - 80 8080 443
     ports:
         - 9180:80
+        - 9181:443
 
-# docker-compose -f docker-compose.yml -p "astem-szf" up, https://stackoverflow.com/questions/53401672/stack-name-with-docker-compose
+# docker-compose -f docker-compose.yml -p "agh-drive" up, https://stackoverflow.com/questions/53401672/stack-name-with-docker-compose
 # docker-compose up -d
-# docker-compose -p "astem-szf" build -d
+# docker-compose -f docker-compose.yml -p "agh-drive" build -d
 # Zmiana strefy czasowej mariadb https://mariadb.com/kb/en/time-zones/
 
 # Jesli przy imporcie db komendą:
