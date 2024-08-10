@@ -6,7 +6,7 @@ date_default_timezone_set('Europe/Warsaw');
 ini_set('include_path',
 	dirname(__DIR__) . PATH_SEPARATOR .
 	dirname(__DIR__) . DIRECTORY_SEPARATOR . 'library' . PATH_SEPARATOR .
-	dirname(__DIR__) . DIRECTORY_SEPARATOR  . 'Model' . PATH_SEPARATOR .
+	dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Model' . PATH_SEPARATOR .
 	dirname(__DIR__) . DIRECTORY_SEPARATOR . 'View' . PATH_SEPARATOR .
 	dirname(__DIR__) . DIRECTORY_SEPARATOR . 'library/pear' . PATH_SEPARATOR .
 	dirname(__DIR__) . DIRECTORY_SEPARATOR . 'library/smarty/libs' . PATH_SEPARATOR .
@@ -161,7 +161,13 @@ $smtpinfo["auth"] = true;
 $smtpinfo["username"] = "drive@agh.edu.pl";
 $smtpinfo["password"] = "Fu7d-ipi1t";
 $smtpinfo["from"] = "drive@agh.edu.pl";
-
+$smtpinfo["socket_options"] = array(
+    "ssl"=>array(
+        "cafile" => "/etc/ssl/certs/local/cacert.pem",
+        "verify_peer"=>true,
+        "verify_peer_name"=>true,
+    ),
+);
 
 /************************ dump function definition ****************************/
 function dump($var)
