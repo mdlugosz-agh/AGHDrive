@@ -34,7 +34,7 @@ services:
         - ../certs:/etc/ssl/certs
         - ../data:/mnt/data
     expose:
-        - 80 8080 443
+        - 80 8080
     ports:
         - 9180:80
         - 9181:443
@@ -48,3 +48,7 @@ services:
 # 
 # są błędy: ERROR 1227 (42000) at line 529: Access denied; you need (at least one of) the SUPER privilege(s) for this operation
 # trzeba zamienić DEFINER=`aghdrive`@`localhost` na DEFINER=`aghdrive`@`%`
+
+# SMTP via ssl 
+# https://curl.se/docs/caextract.html
+# https://stackoverflow.com/questions/46864447/smtp-error-could-not-connect-to-smtp-host-i-tried-all-result-found-on-stackove
