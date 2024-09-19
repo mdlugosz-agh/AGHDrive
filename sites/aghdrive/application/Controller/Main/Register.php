@@ -35,12 +35,6 @@ class Controller_Main_Register extends Controller_Edit
 
 		$data = $this->qForm->getValue();
 
-		// Check if login is unique
-		if ( count((new Container('user'))->list(array("login='" . $data['login'] . "'", "active='1'")))>0 ) {
-			$this->qForm->getElementsByName('login')[0]->setError('The login is used now.');
-			throw new Controller_Exception('Form data are not valid!', Controller_Exception::FORM_PROCESS_DATA);
-		}
-
 		// Check if email is unique
 		if ( count((new Container('user'))->list(array("email='" . $data['email'] . "'", "active='1'")))>0 ) {
 			$this->qForm->getElementsByName('email')[0]->setError('The email is used now.');

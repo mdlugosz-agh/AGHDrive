@@ -12,13 +12,9 @@ class Form_Main_Register extends Form
 		
 		$fieldset = $this->addElement('fieldset')->setLabel(' Register ');
 		
-		$login = $fieldset->addElement('text', 'login', 
-			array('id' => 'login', 'size' => 50, 'maxlength' => 255))
-			->setLabel('Login:');
-
 		$mail = $fieldset->addElement('text', 'email', 
 			array('size' => 50, 'maxlength' => 255))
-			->setLabel('Mail:');
+			->setLabel('Login/Mail:');
 		
 		/*
 		$tmp = $fieldset->addElement('select', 'iselTest', array('size' => 1))
@@ -36,9 +32,6 @@ class Form_Main_Register extends Form
 		
 		$fieldset->addElement('submit', null, array('value' => 'Register'));
 		
-		// Check login
-		$login->addRule('required', 'Set login');
-
 		// Check mail and validate mail
 		$mail->addRule('required', 'Set mail')
 			->and_($mail->addRule('email', 'Email is incorrect'));

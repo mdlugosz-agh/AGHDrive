@@ -108,7 +108,8 @@ class User extends Model
     		
     		unset($data['passwd']);
     	}
-    	
+        // Login is the same as email
+    	$data['login'] = $data['email'];
     	return $this->_save($data, 'user_id');
     }
     

@@ -1,7 +1,7 @@
 {extends file="layout01.tpl"}
 
 {block name="header"}
-	Retrieve password2
+	Retrieve password
 {/block}
 
 {block name=css append}
