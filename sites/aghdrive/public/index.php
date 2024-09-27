@@ -45,6 +45,7 @@ $m->connect('news/list', 		array('controller' 	=> 'News',	'action' => 'list'));
 $m->connect('news/:id',			array('controller'	=> 'News',	'action' => 'news'));
 
 $m->connect('documentation',	array('controller' 	=> 'Documentation',	'action' => 'list'));
+$m->connect('content/:key', 	array('controller' 	=> 'Documentation', 'action' => 'run'));
 $m->connect('login', 			array('controller' 	=> 'Login'));
 $m->connect('logout', 			array('controller' 	=> 'Logout'));
 $m->connect('register', 		array('controller' 	=> 'Register'));
@@ -53,7 +54,7 @@ $m->connect('password/set/:code',array('controller' => 'Password_Set'));
 $m->connect('download/list', 	array('controller' 	=> 'Download', 'action' => 'list'));
 $m->connect('download/info/:id',array('controller' 	=> 'Download', 'action' => 'info'));
 $m->connect('download/:file', 	array('controller' 	=> 'Download', 'action' => 'download'));
-$m->connect('content/:key', 	array('controller' 	=> 'Documentation', 'action' => 'run'));
+
 
 $route = $m->match($_SERVER['REQUEST_URI']);
 $route['controller']	= isset($route['controller']) 	? $route['controller']	: 'Index';
